@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AbdulHalim-dev | عبد الحليم</title>
+  <!-- استدعاء خط Changa -->
+  <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Changa', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      direction: rtl;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #0077cc;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode header h1 {
+      color: #82aaff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #555;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode header p {
+      color: #bbbbbb;
+    }
+
+    #toggle-theme {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 50%;
+      background-color: #0077cc;
+      color: white;
+      font-family: 'Changa', sans-serif;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      box-shadow: 0 0 8px #0077ccaa;
+    }
+
+    #toggle-theme:hover {
+      background-color: #005fa3;
+      box-shadow: 0 0 12px #005fa3cc;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode section {
+      background: #1e1e1e;
+      color: #e0e0e0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+
+    h2 {
+      color: #0077cc;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #0077cc;
+      padding-bottom: 5px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+      font-family: 'Changa', sans-serif;
+    }
+
+    body.dark-mode h2 {
+      color: #82aaff;
+      border-color: #82aaff;
+    }
+
+    ul.skills-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-family: 'Changa', sans-serif;
+    }
+
+    ul.skills-list li {
+      background: #0077cc;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: default;
+      user-select: none;
+      box-shadow: 0 0 6px #5a7effaa;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    ul.skills-list li:hover {
+      background: #005fa3;
+      box-shadow: none;
+    }
+
+    body.dark-mode ul.skills-list li {
+      background: #5579ff;
+      color: white;
+      box-shadow: 0 0 12px #5579ffcc;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      font-family: 'Changa', sans-serif;
+    }
+
+    .project-card {
+      background: #e7f0ff;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      background: #cce0ff;
+    }
+
+    body.dark-mode .project-card {
+      background: #2a2a3a;
+      color: #ddd;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.9);
+    }
+
+    body.dark-mode .project-card:hover {
+      background: #3a3a5a;
+      color: white;
+      box-shadow: 0 6px 12px #5579ffcc;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #005a9e;
+      transition: color 0.3s ease;
+      font-family: 'Changa', sans-serif;
+    }
+
+    body.dark-mode .project-title {
+      color: #82aaff;
+    }
+
+    .project-description {
+      font-size: 1rem;
+      color: #333;
+      transition: color 0.3s ease;
+      font-family: 'Changa', sans-serif;
+    }
+
+    body.dark-mode .project-description {
+      color: #ccc;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 25px;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+      font-family: 'Changa', sans-serif;
+    }
+
+    .contact-list li a img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .contact-list li a img:hover {
+      transform: scale(1.15);
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+      font-family: 'Changa', sans-serif;
+    }
+
+    body.dark-mode footer {
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>عبد الحليم</h1>
+    <p>مطور مبرمج تطبيقات</p>
+    <button id="toggle-theme" aria-label="تبديل وضع الليل والنهار" title="تبديل الوضع">☀️</button>
+  </header>
+
+  <section id="about">
+    <h2>نبذة عني</h2>
+    <p>أنا عبد الحليم ، أتعلم البرمجة و اطور تطبيقات مختلفة باستخدام Kotlin، Python، JavaScript، C#، وغيرها. شغفي هو صناعة ألعاب ومشاريع تساعد الناس و أسعى للعمل كمطور شامل (Full Stack) في المستقبل، وأطور من مهاراتي كل يوم.</p>
+  </section>
+
+  <section id="skills">
+    <h2>المهارات</h2>
+    <ul class="skills-list">
+      <li>Kotlin</li>
+      <li>React Native</li>
+      <li>Python</li>
+      <li>C# Basics</li>
+      <li>GDScript</li>
+      <li>Java</li>      
+      <li>CustomTkinter</li>
+      <li>Godot</li>
+    </ul>
+  </section>
+  <style>
+    .project-card .github-link-btn {
+      display: none;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #24292f;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.2s;
+      text-decoration: none;
+      align-items: center;
+      gap: 6px;
+    }
+    .project-card:hover .github-link-btn {
+      display: flex;
+    }
+    .project-card {
+      position: relative;
+    }
+    .github-link-btn img {
+      width: 20px;
+      height: 20px;
+      margin-left: 5px;
+    }
+  </style>
+  <script>
+    // روابط جت هب للمشاريع (رتبهم بنفس ترتيب projects)
+    const githubLinks = [
+      "https://github.com/Abdo-Dev500/recipes-app",
+      "https://github.com/Abdo-Dev500/todo-list",
+      "https://github.com/Abdo-Dev500/attendance-app",
+      "https://github.com/Abdo-Dev500/qr-code-maker"
+    ];
+
+    // بعد إنشاء كروت المشاريع
+    document.querySelectorAll('.project-card').forEach((card, idx) => {
+      const githubBtn = document.createElement('a');
+      githubBtn.href = githubLinks[idx] || "#";
+      githubBtn.target = "_blank";
+      githubBtn.className = "github-link-btn";
+      githubBtn.title = "رابط المشروع على GitHub";
+      githubBtn.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" /> جت هب`;
+      card.appendChild(githubBtn);
+    });
+  </script>
+  <section id="projects">
+    <h2>المشاريع</h2>
+    <div class="projects" id="projects-list">
+      <!-- المشاريع هتظهر هنا -->
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>تواصل معي</h2>
+    <ul class="contact-list">
+      <li>
+        <a href="mailto:abdulhalim@example.com" title="البريد الإلكتروني">
+          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/Abdo-Dev500" target="_blank" title="GitHub">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" />
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/@Abdo_PY" target="_blank" title="YouTube">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+        </a>
+      </li>
+      <li>
+        <a href="https://wa.me/+201283543651" target="_blank" title="WhatsApp">
+          <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" />
+        
+        <style>
+
+          .contact-list li a img[alt="WhatsApp"] {
+            border-radius: 50%;
+            background: #25d366;
+            padding: 3px;
+            box-shadow: 0 2px 8px #25d36644;
+          }
+        </style>
+        </a>
+
+      </li>
+      <li></li>
+        <a href="" target="_blank" title="WhatsApp">
+          <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" />
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 عبد الحليم - كل الحقوق محفوظة
+  </footer>
+
+  <script>
+    const projects = [
+      {
+        title: "برنامح تسجيل وصفات",
+        description: "برنامج بسيط لتسجيل الوصفات مع واجهة"
+      },
+      {
+        title: "تطبيق To-Do List",
+        description: "تطبيق مهام بتصميم احترافي مع خاصية حفظ وتعديل المهام."
+      },
+      {
+        title: "برنامج تسجيل حضور",
+        description: "برنامج بسيط لتسجيل حضور الطلاب في المدارس"
+      },
+     {
+        title: "صانع أكواد QR",
+        description: "برنامج بسيط لصنع أكواد QR بسهولة"
+      }
+    ];
+    // إضافة نص توضيحي أسفل عنوان المشاريع
+    const projectsSection = document.getElementById('projects');
+    const infoText = document.createElement('p');
+    infoText.style.textAlign = 'center';
+    infoText.style.margin = '15px 0 25px';
+    infoText.style.color = '#0077cc';
+    infoText.style.fontWeight = 'bold';
+    infoText.textContent = 'لرؤية الأكواد يرجى زيارة جت هب';
+    projectsSection.insertBefore(infoText, document.getElementById('projects-list'));
+    const projectsList = document.getElementById('projects-list');
+
+    projects.forEach(proj => {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+
+      const title = document.createElement('h3');
+      title.className = 'project-title';
+      title.textContent = proj.title;
+
+      const desc = document.createElement('p');
+      desc.className = 'project-description';
+      desc.textContent = proj.description;
+
+      card.appendChild(title);
+      card.appendChild(desc);
+
+      projectsList.appendChild(card);
+    });
+    // إعادة ترتيب إضافة زر جت هب بعد إنشاء الكروت
+    document.querySelectorAll('.project-card').forEach((card, idx) => {
+      const githubBtn = document.createElement('a');
+      githubBtn.href = githubLinks[idx] || "#";
+      githubBtn.target = "_blank";
+      githubBtn.className = "github-link-btn";
+      githubBtn.title = "رابط المشروع على GitHub";
+      githubBtn.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" /> جت هب`;
+      card.appendChild(githubBtn);
+    });
+    // زر التبديل الوضع الليلي/النهاري
+    const toggleBtn = document.getElementById('toggle-theme');
+    const body = document.body;
+
+    // استعادة الوضع السابق من التخزين المحلي
+    if(localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      toggleBtn.textContent = '🌙';
+    } else {
+      toggleBtn.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if(body.classList.contains('dark-mode')) {
+        toggleBtn.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        toggleBtn.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+
+</body>
+</html>
